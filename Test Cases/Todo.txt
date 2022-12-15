@@ -1,0 +1,31 @@
+Feature Number, Priority, Description
+3 FR001.B1 P2 User will be able to login into the website using the email and password.
+7 FR001.B2 P3 Reset password option for the users to reset the password in case of forgot password.
+13 FR002.B1 P2 Buyers will be able to get registered on website with simple registration form with details
+2 FR003.B1 P1 Buyers will be able to search the products by keyword, by browsing through category/sub-category, using filters and sorting options.
+5 FR004.B1 P1 Buyers will be able to view the listing of the product with following details:
+10 FR004.B2 P1 By clicking on product title and image, user will be able to navigate on product detail page to view more details of the product.
+
+1 FR005.B6 P3 User will not be able to add the product to wishlist without login.
+6 FR007.B1 P1 The products can be added into shopping cart from the product detail page.
+9 FR007.B4 P1 User will be able to proceed for checkout of any items/ all items available in shopping cart.
+
+4 FR008.B2 P1 Buyer is required to login into website for checkout and payment.
+11 FR008.B3 P2 Buyer will required to enter billing and shipping address before checkout and payment.
+12 FR013.B1 P4 Buyers will be able to contact support team via email regarding any queries/
+
+1. Project Planning
+   Enter features into Jira. This will be part of the Product backlog. check!
+2. Sprint Planning
+   Determine Story/Effort points for each feature
+   Create Sprint Backlog - Committ to work for the sprint (6 hours)
+
+3. Sprint work:
+   a. Write manual testcases for each feature (per person). 
+    Minimum 1 positive path
+    Minimum 1 negative path
+    Max 2 positive path
+    Max 1 negative path
+   b. Determine which test cases should be automated then write the automated tests (per person).
+
+If any bugs are found immediately log them. Ensure that you have traceability.
