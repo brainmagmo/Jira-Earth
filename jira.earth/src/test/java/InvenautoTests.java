@@ -19,5 +19,16 @@ public class InvenautoTests extends TestBase {
 
 		assertEquals(selectedURL, expctedURL, "The Home Page should be loaded.");
     }
+    
+    @Test
+    public void canOpenSignInPage() {
+    	var expctedURL = "https://invenauto.tech/index.php?controller=authentication&back=my-account";
+
+		var selectedURL = fromPages()
+				.getSigninPage()
+				.getURL();
+
+		assertEquals(selectedURL, expctedURL, "The Home Page should be loaded.");    	
+    }
 
 }

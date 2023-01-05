@@ -7,7 +7,7 @@ public class HomePage extends Page {
 	public HomePage(WebDriver driver) {
 		super(driver);
 		this.route = "index.php";
-		driver.get(getURL());
+		driver.get(this.getURL());
 	}
 
 }
