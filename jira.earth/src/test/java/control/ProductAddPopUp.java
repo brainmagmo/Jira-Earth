@@ -11,8 +11,9 @@ public class ProductAddPopUp extends Control {
 		super(element);
 	}
 	
-	public void clickProceedToCheckout() {
+	public CheckoutPage clickProceedToCheckout() {
 		checkoutLink.click();
+		return new CheckoutPage(this.driver);
 	}
 
 }

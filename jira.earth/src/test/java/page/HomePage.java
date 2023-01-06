@@ -9,7 +9,7 @@ import control.ProductListing;
 
 public class HomePage extends Page {
 
-    @FindBy(how=How.CSS, using="#product-container")
+    @FindBy(how=How.CSS, using=".product-container")
     private WebElement productListing; 
 
 	public HomePage(WebDriver driver) {

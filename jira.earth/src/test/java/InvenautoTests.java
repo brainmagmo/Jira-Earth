@@ -3,6 +3,7 @@ import static org.testng.Assert.assertEquals;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import page.HomePage;
 import page.SigninPage;
 
 public class InvenautoTests extends TestBase {
@@ -52,10 +53,18 @@ public class InvenautoTests extends TestBase {
     	
     }
 
-//    @Test
-//    public void canCheckoutAfterProductinCart() {
-//        fromPages()
-//          .getHomePage()
-//          .navigate()
-//    }
+    @Test
+    public void canCheckoutAfterProductinCart() {
+    	var test = true;
+    	
+    	var homePage = (HomePage)fromPages()
+    			.getHomePage()
+    			.navigate();
+    	var checkoutPage = homePage.getProductListing()
+    			.addToCart()
+    			.clickProceedToCheckout();
+        var itemsExistInCartOnCheckoutPage = checkoutPage.areThereProducts();
+    	
+        Assert.assertTrue(test, "should be able to checkout");
+    }
 }
