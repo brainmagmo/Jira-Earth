@@ -1,5 +1,7 @@
+
 import java.time.Duration;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import driver.DriverManager;
@@ -10,7 +12,7 @@ public abstract class TestBase {
 
 	private PageRepository pageRepository;
 	protected DriverManager driverManager;
-
+	
 	@BeforeMethod
 	public void setup() {
 		var browserType = "chrome";
