@@ -1,5 +1,6 @@
 import static org.testng.Assert.assertEquals;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class InvenautoTests extends TestBase {
@@ -31,6 +32,20 @@ public class InvenautoTests extends TestBase {
 				.getURL();
 
 		assertEquals(selectedURL, expctedURL, "The Home Page should be loaded.");    	
+    }
+    
+    @Test
+    public void canSignIn() {
+    	var sampleEmail = "uwomxdikikacberjff@tmmwj.net";
+    	var samplePassword = "frank";
+    	var expectedUser = "Frank franklin";
+    	
+    	var actualUser = fromPages()
+    			.getSigninPage()
+    			.signIn(sampleEmail, samplePassword)
+    			.getUserName();
+    	Assert.assertEquals(expectedUser, actualUser, "Correct user signed in");
+    	
     }
 
 //    @Test
