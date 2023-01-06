@@ -32,7 +32,7 @@ public class ProductDetailPage extends Page{
 		
 		String s = this.driver.findElement(By.xpath(" //*[text()= 'Product successfully added to your shopping cart '")).getText();
 		
-		//String s1 = this.driver.getPageSource().contains("your Text").getText();
+		
 
 		return s;
 	}
