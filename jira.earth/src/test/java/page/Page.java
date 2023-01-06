@@ -17,8 +17,5 @@ public abstract class Page {
         return index + route;
     }
     
-    public Page navigate() {
-        this.driver.navigate().to(getURL());
-        return this;
-    }
+    abstract Page navigate();
 }

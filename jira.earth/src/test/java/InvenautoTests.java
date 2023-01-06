@@ -3,6 +3,9 @@ import static org.testng.Assert.assertEquals;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import page.HomePage;
+import page.SigninPage;
+
 public class InvenautoTests extends TestBase {
     
     @Test
@@ -42,16 +45,26 @@ public class InvenautoTests extends TestBase {
     	
     	var actualUser = fromPages()
     			.getSigninPage()
+    			.navigate()
     			.signIn(sampleEmail, samplePassword)
     			.getUserName();
     	Assert.assertEquals(expectedUser, actualUser, "Correct user signed in");
     	
     }
 
-//    @Test
-//    public void canCheckoutAfterProductinCart() {
-//        fromPages()
-//          .getHomePage()
-//          .navigate()
-//    }
+    @Test
+    public void canCheckoutAfterProductinCart() {
+    	
+    	var homePage = fromPages()
+    			.getHomePage()
+    			.navigate();
+    	homePage.getProductListing()
+    			.addToCart();
+        var itemsExistInCartOnCheckoutPage = homePage
+        		.getproductPopUp()
+    			.clickProceedToCheckout()
+    			.areThereProducts();
+    	
+        Assert.assertTrue(itemsExistInCartOnCheckoutPage, "should be able to checkout");
+    }
 }
