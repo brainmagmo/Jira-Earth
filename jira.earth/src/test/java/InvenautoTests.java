@@ -1,10 +1,14 @@
 import static org.testng.Assert.assertEquals;
 
+import java.util.Set;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import java.util.Iterator;
 
 import driver.ChromeDriverManager;
 
@@ -58,6 +62,7 @@ public class InvenautoTests extends TestBase {
 
 		driver = new ChromeDriver();
 		driver.get(URL);
+		driver.manage().window().maximize();
 		driver.findElement(By.linkText("Women")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'Faded Short Sleeves T-shirt')]")).click();
 
@@ -73,10 +78,16 @@ public class InvenautoTests extends TestBase {
 		
 		WebDriver driver = new ChromeDriver();
 		var URL = "https://invenauto.tech/index.php";
-
+		
 		driver = new ChromeDriver();
 		driver.get(URL);
+		driver.manage().window().maximize();
 		driver.findElement(By.linkText("Women")).click();
+		driver.findElement(By.xpath("//a[contains(text(),'Faded Short Sleeves T-shirt')]"));
+
+		Actions action = new Actions(driver);
+		action.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Faded Short Sleeves T-shirt')]")));
+		action.click().build();
 		
 	}
 }
