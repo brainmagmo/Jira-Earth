@@ -3,6 +3,8 @@ import static org.testng.Assert.assertEquals;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import page.SigninPage;
+
 public class InvenautoTests extends TestBase {
     
     @Test
@@ -40,8 +42,10 @@ public class InvenautoTests extends TestBase {
     	var samplePassword = "frank";
     	var expectedUser = "Frank franklin";
     	
-    	var actualUser = fromPages()
+    	var signinPage = (SigninPage)fromPages()
     			.getSigninPage()
+    			.navigate();
+    	var actualUser = signinPage
     			.signIn(sampleEmail, samplePassword)
     			.getUserName();
     	Assert.assertEquals(expectedUser, actualUser, "Correct user signed in");
