@@ -10,7 +10,6 @@ public abstract class Page {
     public Page(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
-        this.index = "https://invenauto.tech/";
     }
 
     public String getURL() {
