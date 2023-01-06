@@ -14,7 +14,7 @@ public class ProductListing extends Control {
     }
 
     public ProductAddPopUp addToCart() {
-        addToCartButton.click();
+
         return new ProductAddPopUp(popUp); 
     }
 }
