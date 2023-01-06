@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WrapsDriver;
 import org.openqa.selenium.support.FindBy;
 
+import page.CheckoutPage;
+
 public class ProductAddPopUp extends Control {
 	@FindBy(css="#layer_cart a")
 	private WebElement checkoutLink;

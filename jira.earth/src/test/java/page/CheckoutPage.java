@@ -1,9 +1,7 @@
-package control;
+package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import page.Page;
 
 public class CheckoutPage extends Page {
 
