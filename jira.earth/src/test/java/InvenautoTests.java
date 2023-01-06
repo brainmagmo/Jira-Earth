@@ -55,7 +55,6 @@ public class InvenautoTests extends TestBase {
 
     @Test
     public void canCheckoutAfterProductinCart() {
-    	var test = true;
     	
     	var homePage = (HomePage)fromPages()
     			.getHomePage()
@@ -65,6 +64,6 @@ public class InvenautoTests extends TestBase {
     			.clickProceedToCheckout();
         var itemsExistInCartOnCheckoutPage = checkoutPage.areThereProducts();
     	
-        Assert.assertTrue(test, "should be able to checkout");
+        Assert.assertTrue(itemsExistInCartOnCheckoutPage, "should be able to checkout");
     }
 }
