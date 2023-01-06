@@ -1,6 +1,7 @@
 import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import page.ProductDetailPage;
@@ -19,13 +20,14 @@ public class AddProductFromDetailPage extends TestBase {
     }
 	@Test 
 	public void canAddToCartFromDetailPage() {
-		var expected = "Product successfully added to your shopping cart";
+		var expected = "1";
 		
 		var actual = fromPages()
 					.getProductDetail()
 					.navigate()
 					.addTocart()
 					.isInCart();
-
+		
+		Assert.assertEquals(actual, expected, "product should be added to cart from product page");
 	}
 }

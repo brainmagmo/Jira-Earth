@@ -25,7 +25,7 @@ public class ProductDetailPage extends Page{
 
 	
 	public String isInCart() {
-		String s = this.driver.findElement(By.xpath(" //*[text()= 'Product successfully added to your shopping cart '")).getText();
+		String s = this.driver.findElement(By.xpath("//*[contains(@class,'ajax_cart_quantity')][contains(@style, 'display: inline')]")).getText();
 		return s;
 	}
 
