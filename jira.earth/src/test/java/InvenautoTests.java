@@ -43,10 +43,9 @@ public class InvenautoTests extends TestBase {
     	var samplePassword = "frank";
     	var expectedUser = "Frank franklin";
     	
-    	var signinPage = (SigninPage)fromPages()
+    	var actualUser = fromPages()
     			.getSigninPage()
-    			.navigate();
-    	var actualUser = signinPage
+    			.navigate()
     			.signIn(sampleEmail, samplePassword)
     			.getUserName();
     	Assert.assertEquals(expectedUser, actualUser, "Correct user signed in");
@@ -56,13 +55,15 @@ public class InvenautoTests extends TestBase {
     @Test
     public void canCheckoutAfterProductinCart() {
     	
-    	var homePage = (HomePage)fromPages()
+    	var homePage = fromPages()
     			.getHomePage()
     			.navigate();
-    	var checkoutPage = homePage.getProductListing()
-    			.addToCart()
-    			.clickProceedToCheckout();
-        var itemsExistInCartOnCheckoutPage = checkoutPage.areThereProducts();
+    	homePage.getProductListing()
+    			.addToCart();
+        var itemsExistInCartOnCheckoutPage = homePage
+        		.getproductPopUp()
+    			.clickProceedToCheckout()
+    			.areThereProducts();
     	
         Assert.assertTrue(itemsExistInCartOnCheckoutPage, "should be able to checkout");
     }

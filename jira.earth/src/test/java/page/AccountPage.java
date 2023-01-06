@@ -18,5 +18,10 @@ public class AccountPage extends Page {
 	public Object getUserName() {
 		return accountElement.getText();
 	}
+	
+    public AccountPage navigate() {
+        this.driver.navigate().to(getURL());
+        return this;
+    }
 
 }
