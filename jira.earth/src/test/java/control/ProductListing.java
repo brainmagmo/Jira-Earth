@@ -1,20 +1,19 @@
 package control;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class ProductListing extends Control {
-	@FindBy(xpath="./span[text()='Add to Cart']/../..")
-	private WebElement addToCartButton;
-	@FindBy(id="layer_cart")
-	private WebElement popUp;
 
     public ProductListing(WebElement element) {
         super(element);
     }
 
-    public ProductAddPopUp addToCart() {
-
-        return new ProductAddPopUp(popUp); 
+    public void addToCart() {
+        WebElement addToCartButton =
+                this.element
+                    .findElement(By.cssSelector("a.ajax_add_to_cart_button"));
+        
+        addToCartButton.click();
     }
 }

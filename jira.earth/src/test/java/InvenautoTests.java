@@ -55,13 +55,18 @@ public class InvenautoTests extends TestBase {
 
     @Test
     public void canCheckoutAfterProductinCart() {
-    	
     	var homePage = (HomePage)fromPages()
     			.getHomePage()
     			.navigate();
-    	var checkoutPage = homePage.getProductListing()
-    			.addToCart()
-    			.clickProceedToCheckout();
+
+    	homePage
+    	   .getProductListing()
+    	   .addToCart();
+    	
+    	var checkoutPage = 
+    	    homePage
+    	        .clickProceedToCheckout();
+
         var itemsExistInCartOnCheckoutPage = checkoutPage.areThereProducts();
     	
         Assert.assertTrue(itemsExistInCartOnCheckoutPage, "should be able to checkout");

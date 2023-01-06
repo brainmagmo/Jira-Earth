@@ -31,4 +31,7 @@ public class PageRepository {
 		return this.accountPage;
 	}
 
+	public CheckoutPage getCheckoutPage() {
+	    return new CheckoutPage(this.driver);
+	}
 }

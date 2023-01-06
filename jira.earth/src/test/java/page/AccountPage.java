@@ -18,5 +18,4 @@ public class AccountPage extends Page {
 	public Object getUserName() {
 		return accountElement.getText();
 	}
-
 }
