@@ -7,7 +7,11 @@ public class PageRepository {
 	private WebDriver driver;
 	private HomePage homePage;
 	private SigninPage signinPage;
+
+	private AccountPage accountPage;
+
 	private ProductDetailPage ProductDetailPage;
+
 
 	public PageRepository(WebDriver driver) {
 		this.driver = driver;
@@ -25,10 +29,17 @@ public class PageRepository {
 		return this.signinPage;
 	}
 
+
+	public AccountPage getAccountPage() {
+		if(this.accountPage == null)
+			this.accountPage = new AccountPage(this.driver);
+		return this.accountPage;
+}
 	public ProductDetailPage getProductDetail() {
 		if(this.ProductDetailPage == null)
 			this.ProductDetailPage = new ProductDetailPage(this.driver);
 		return this.ProductDetailPage;
+
 	}
 
 }
