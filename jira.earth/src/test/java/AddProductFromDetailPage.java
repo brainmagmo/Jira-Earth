@@ -23,6 +23,8 @@ public class AddProductFromDetailPage extends TestBase {
 		
 		var actual = fromPages()
 					.getProductDetail()
+					.navigate()
+					.addTocart()
 					.isInCart();
 
 	}
