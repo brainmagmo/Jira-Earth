@@ -1,6 +1,7 @@
 package control;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WrapsDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class ProductAddPopUp extends Control {
@@ -13,7 +14,7 @@ public class ProductAddPopUp extends Control {
 	
 	public CheckoutPage clickProceedToCheckout() {
 		checkoutLink.click();
-		return new CheckoutPage(this.driver);
+		return new CheckoutPage(((WrapsDriver)element).getWrappedDriver());
 	}
 
 }
