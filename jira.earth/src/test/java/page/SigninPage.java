@@ -16,9 +16,8 @@ public class SigninPage extends Page {
 	public SigninPage(WebDriver driver) {
 		super(driver);
 		this.route = "index.php?controller=authentication&back=my-account";
-		driver.get(this.getURL());
 	}
-	
+  
 	public AccountPage signIn(String username, String password) {
 		emailInput.sendKeys(username);
 		passwordInput.sendKeys(password);
@@ -27,3 +26,4 @@ public class SigninPage extends Page {
 	}
 
 }
+
