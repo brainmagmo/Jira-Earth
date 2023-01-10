@@ -3,6 +3,8 @@ package test;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import control.TShirtProductDetail;
+
 public class InvenAutoTests extends TestBase {
 
     @Test
@@ -70,5 +72,22 @@ public class InvenAutoTests extends TestBase {
 		       .getCartCount();
 
 		Assert.assertEquals(actualCartCount, expectedCartCount, "product should be added to cart");
+	}
+	
+	@Test
+	public void SearchProduct() {
+		var homePage = fromPages()
+    			.getHomePage()
+    			.navigate();
+		
+		TShirtProductDetail detail= homePage.getTShirtDetails();
+		detail.click();
+		
+		var expectedResult = "Faded Short Sleeves T-shirt";
+		var expectedPrice="$16.51";
+		var expectedCondition="New product";
+		Assert.assertEquals(detail.getResult(), expectedResult, "The title does not match");
+		Assert.assertEquals(detail.getCondition(), expectedCondition, "The Condition of the product does not match");
+		Assert.assertEquals(detail.getPrice(), expectedPrice, "The price of an item does not match");
 	}
 }

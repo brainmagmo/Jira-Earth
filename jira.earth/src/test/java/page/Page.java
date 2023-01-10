@@ -10,6 +10,7 @@ public abstract class Page {
 
     public Page(WebDriver driver) {
         this.driver = driver;
+        this.index="https://invenauto.tech/";
         PageFactory.initElements(this.driver, this);
     }
 
