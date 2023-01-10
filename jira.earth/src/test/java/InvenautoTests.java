@@ -12,6 +12,9 @@ import java.util.Iterator;
 
 import driver.ChromeDriverManager;
 
+import page.HomePage;
+import page.SigninPage;
+
 public class InvenautoTests extends TestBase {
 
 	@Test
@@ -28,32 +31,36 @@ public class InvenautoTests extends TestBase {
 		assertEquals(selectedURL, expctedURL, "The Home Page should be loaded.");
 	}
 
-	@Test
-	public void canOpenSignInPage() {
-		var expctedURL = "https://invenauto.tech/index.php?controller=authentication&back=my-account";
+  
+    @Test
+    public void canOpenSignInPage() {
+    	var expctedURL = "https://invenauto.tech/index.php?controller=authentication&back=my-account";
 
-		var selectedURL = fromPages().getSigninPage().navigate().getURL();
+		var selectedURL = fromPages()
+				.getSigninPage()
+				.navigate()
+				.getURL();
 
-		assertEquals(selectedURL, expctedURL, "The Home Page should be loaded.");
-	}
+		assertEquals(selectedURL, expctedURL, "The Home Page should be loaded.");    	
+    }
+    
 
-	@Test
-	public void canSignIn() {
-		var sampleEmail = "uwomxdikikacberjff@tmmwj.net";
-		var samplePassword = "frank";
-		var expectedUser = "Frank franklin";
+      @Test
+    public void canSignIn() {
+    	var sampleEmail = "uwomxdikikacberjff@tmmwj.net";
+    	var samplePassword = "frank";
+    	var expectedUser = "Frank franklin";
+    	
+    	var actualUser = fromPages()
+    			.getSigninPage()
+    			.navigate()
+    			.signIn(sampleEmail, samplePassword)
+    			.getUserName();
+    	Assert.assertEquals(expectedUser, actualUser, "Correct user signed in");
+    	
+    }
 
-		var actualUser = fromPages().getSigninPage().signIn(sampleEmail, samplePassword).getUserName();
-		Assert.assertEquals(expectedUser, actualUser, "Correct user signed in");
-
-	}
-
-//    @Test
-//    public void canCheckoutAfterProductinCart() {
-//        fromPages()
-//          .getHomePage()
-//          .navigate()
-//    }
+  //driver shouldn't be in this page...
 	@Test
 	public void ViewProductDetailsForFurtherInformation() {
 
@@ -90,4 +97,24 @@ public class InvenautoTests extends TestBase {
 		action.click().build();
 		
 	}
+
+    
+
+
+    @Test
+    public void canCheckoutAfterProductinCart() {
+    	
+    	var homePage = fromPages()
+    			.getHomePage()
+    			.navigate();
+    	homePage.getProductListing()
+    			.addToCart();
+        var itemsExistInCartOnCheckoutPage = homePage
+        		.getproductPopUp()
+    			.clickProceedToCheckout()
+    			.areThereProducts();
+    	
+        Assert.assertTrue(itemsExistInCartOnCheckoutPage, "should be able to checkout");
+    }
+
 }
