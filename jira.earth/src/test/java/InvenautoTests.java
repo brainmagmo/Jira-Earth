@@ -23,7 +23,7 @@ public class InvenautoTests extends TestBase {
 				.navigate()
 				.getURL();
 
-		assertEquals(selectedURL, expctedURL, "The Home Page should be loaded.");    	
+		assertEquals(selectedURL, expctedURL, "The sign-in page should be loaded.");    	
     }
 
     @Test
@@ -37,18 +37,28 @@ public class InvenautoTests extends TestBase {
     			.navigate()
     			.signIn(sampleEmail, samplePassword)
     			.getUserName();
-    	Assert.assertEquals(expectedUser, actualUser, "Correct user signed in");
+
+    	Assert.assertEquals(actualUser, expectedUser, "User not signed in");
     }
 
 	@Test
-	public void fr004b2_canViewProductDetails() {
+	public void fr004B2_canViewProductDetails() {
 	    var expectedProductName = "Faded Short Sleeves T-shirt";
+	    var expectedCondition = "New product";
+	    var expectedDescription = "Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!";
+	    var expectedPrice = "$16.51";
 
 	    var product1 = fromPages().getProductDetail(1).navigate();
 
 	    var actualProductName =  product1.getTitle();
+	    var actualCondition = product1.getCondition();
+	    var actualDescription = product1.getDescription();
+	    var actualPrice = product1.getPrice();
 
 		Assert.assertEquals(actualProductName, expectedProductName, "Product name does not match");
+		Assert.assertEquals(actualCondition, expectedCondition, "Condition does not match");
+		Assert.assertEquals(actualDescription, expectedDescription, "Description does not match");
+		Assert.assertEquals(actualPrice, expectedPrice, "Price does not match");
 	}
 
     @Test
@@ -77,7 +87,7 @@ public class InvenautoTests extends TestBase {
 		   = fromPages()
 		       .getProductDetail(2)
 		       .navigate()
-		       .addTocart()
+		       .addToCart()
 		       .getCartCount();
 
 		Assert.assertEquals(actualCartCount, expectedCartCount, "product should be added to cart");

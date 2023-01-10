@@ -11,7 +11,7 @@ public abstract class TestBase {
 
 	private PageRepository pageRepository;
 	protected DriverManager driverManager;
-	
+
 	@BeforeMethod
 	public void setup() {
 		var browserType = "chrome";
