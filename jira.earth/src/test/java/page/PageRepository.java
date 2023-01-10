@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class PageRepository {
 
-    WebDriver driver;
+    private WebDriver driver;
     
 	public PageRepository(WebDriver driver) {
 		this.driver = driver;
@@ -20,9 +20,10 @@ public class PageRepository {
 
 	public AccountPage getAccountPage() {
 	    return new AccountPage(this.driver);
-}
-	public ProductDetailPage getProductDetail() {
-		return new ProductDetailPage(this.driver);
+	}
+
+	public ProductDetailPage getProductDetail(int id) {
+		return new ProductDetailPage(this.driver, id);
 	}
 
 	public CheckoutPage getCheckoutPage() {

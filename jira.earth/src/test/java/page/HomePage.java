@@ -26,14 +26,12 @@ public class HomePage extends Page {
 	    return new ProductListing(this.productListing);
 	}
 
-
 	public CheckoutPage clickProceedToCheckout() {
 	    checkoutLink.click();
 	    return new CheckoutPage(this.driver);
 	}
 
-	
-	public ProductAddPopUp  getproductPopUp() {
+	public ProductAddPopUp  getProductPopUp() {
 		WebElement popUp = this.driver.findElement(By.id("layer_cart"));
 		return new ProductAddPopUp(popUp); 
 	}
@@ -42,5 +40,4 @@ public class HomePage extends Page {
         this.driver.navigate().to(getURL());
         return this;
     }
-
 }

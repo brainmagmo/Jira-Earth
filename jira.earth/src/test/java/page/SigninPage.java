@@ -8,8 +8,10 @@ public class SigninPage extends Page {
 
 	@FindBy(css="input#email")
 	private WebElement emailInput;
+
 	@FindBy(css="input#passwd")
 	private WebElement passwordInput;
+
 	@FindBy(css="button#SubmitLogin")
 	private WebElement signInButton;
 

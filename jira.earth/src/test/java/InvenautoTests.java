@@ -1,9 +1,5 @@
 import static org.testng.Assert.assertEquals;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,7 +13,6 @@ public class InvenautoTests extends TestBase {
 
 		assertEquals(selectedURL, expctedURL, "The Home Page should be loaded.");
 	}
-
 
     @Test
     public void canOpenSignInPage() {
@@ -45,41 +40,15 @@ public class InvenautoTests extends TestBase {
     	Assert.assertEquals(expectedUser, actualUser, "Correct user signed in");
     }
 
-    //driver shouldn't be in this page...
 	@Test
 	public void fr004b2_canViewProductDetails() {
+	    var expectedProductName = "Faded Short Sleeves T-shirt";
 
-		WebDriver driver = new ChromeDriver();
-		var URL = "https://invenauto.tech/index.php";
+	    var product1 = fromPages().getProductDetail(1).navigate();
 
-		driver = new ChromeDriver();
-		driver.get(URL);
-		driver.manage().window().maximize();
-		driver.findElement(By.linkText("Women")).click();
-		driver.findElement(By.xpath("//a[contains(text(),'Faded Short Sleeves T-shirt')]")).click();
+	    var actualProductName =  product1.getTitle();
 
-		var result = driver.findElement(By.xpath("//h1[contains(text(), 'Faded Short Sleeves T-shirt')]")).getText();
-		var expectedResult = "Faded Short Sleeves T-shirt";
-
-		Assert.assertEquals(result, expectedResult, "The Webpage title does not match");
-
-	}
-	
-	@Test
-	public void ViewProductDetailsForFurtherInformationNegative() {
-		
-		WebDriver driver = new ChromeDriver();
-		var URL = "https://invenauto.tech/index.php";
-		
-		driver = new ChromeDriver();
-		driver.get(URL);
-		driver.manage().window().maximize();
-		driver.findElement(By.linkText("Women")).click();
-		driver.findElement(By.xpath("//a[contains(text(),'Faded Short Sleeves T-shirt')]"));
-
-		Actions action = new Actions(driver);
-		action.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Faded Short Sleeves T-shirt')]")));
-		action.click().build();
+		Assert.assertEquals(actualProductName, expectedProductName, "Product name does not match");
 	}
 
     @Test
@@ -93,7 +62,7 @@ public class InvenautoTests extends TestBase {
     			.addToCart();
 
         var itemsExistInCartOnCheckoutPage = homePage
-                .getproductPopUp()
+                .getProductPopUp()
                 .clickProceedToCheckout()
     			.areThereProducts();
 
@@ -102,14 +71,15 @@ public class InvenautoTests extends TestBase {
 
 	@Test 
 	public void fr007B1_canAddToCartFromDetailPage() {
-		var expected = "1";
+		var expectedCartCount = "1";
 
-		var actual = fromPages()
-					.getProductDetail()
-					.navigate()
-					.addTocart()
-					.isInCart();
+		var actualCartCount 
+		   = fromPages()
+		       .getProductDetail(2)
+		       .navigate()
+		       .addTocart()
+		       .getCartCount();
 
-		Assert.assertEquals(actual, expected, "product should be added to cart from product page");
+		Assert.assertEquals(actualCartCount, expectedCartCount, "product should be added to cart");
 	}
 }

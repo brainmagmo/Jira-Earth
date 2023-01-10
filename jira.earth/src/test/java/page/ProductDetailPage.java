@@ -2,19 +2,18 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 public class ProductDetailPage extends Page{
 
-	private int productID = 2;
-
-	public ProductDetailPage(WebDriver driver) {
-		super(driver);		
-		this.route ="?id_product="+productID+"&controller=product";		
-	}
-
+    @FindBy(how=How.XPATH, using=".//h1[@itemprop='name']")
+    private WebElement titleElement;
+    
 	public ProductDetailPage(WebDriver driver, int productID) {
 		super(driver);		
-		this.route ="?id_product="+productID+"&controller=product";		
+		this.route ="?id_product=" + productID + "&controller=product";		
 	}
 
 	public ProductDetailPage addTocart() {
@@ -22,9 +21,13 @@ public class ProductDetailPage extends Page{
 		return this;
 	}
 
-	public String isInCart() {
-		String s = this.driver.findElement(By.xpath("//*[contains(@class,'ajax_cart_quantity')][contains(@style, 'display: inline')]")).getText();
-		return s;
+	public String getTitle() {
+	    return titleElement.getText();
+	}
+
+	public String getCartCount() {
+	    String xpath = "//*[contains(@class,'ajax_cart_quantity')][contains(@style, 'display: inline')]";
+		return this.driver.findElement(By.xpath(xpath)).getText();
 	}
 
 	@Override
