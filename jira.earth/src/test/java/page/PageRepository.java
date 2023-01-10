@@ -12,7 +12,6 @@ public class PageRepository {
 
 	private ProductDetailPage ProductDetailPage;
 
-
 	public PageRepository(WebDriver driver) {
 		this.driver = driver;
 	}

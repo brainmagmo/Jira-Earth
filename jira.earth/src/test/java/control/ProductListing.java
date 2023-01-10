@@ -11,9 +11,7 @@ public class ProductListing extends Control {
     }
 
     public void addToCart() {
-
     	WebElement addToCartButton = this.element.findElements(By.xpath("//span[text()='Add to cart']")).get(0);
     	addToCartButton.click();
-
     }
 }

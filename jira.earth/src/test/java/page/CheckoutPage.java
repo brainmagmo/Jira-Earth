@@ -16,11 +16,9 @@ public class CheckoutPage extends Page {
 		return maybeButtons.size() > 0;
 	}
 
-	
     public CheckoutPage navigate() {
         this.driver.navigate().to(getURL());
         return this;
     }
 
 }
-

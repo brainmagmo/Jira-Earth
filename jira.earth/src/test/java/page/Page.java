@@ -17,7 +17,5 @@ public abstract class Page {
         return index + route;
     }
 
-    
     abstract Page navigate();
-
 }

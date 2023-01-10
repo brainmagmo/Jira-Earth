@@ -1,26 +1,13 @@
 import static org.testng.Assert.assertEquals;
 
-import java.util.Set;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import java.util.Iterator;
-
-import driver.ChromeDriverManager;
-
-import page.HomePage;
-import page.SigninPage;
 
 public class InvenautoTests extends TestBase {
-
-	@Test
-	public void canTest() {
-		return;
-	}
 
 	@Test
 	public void canOpenIndex() {
@@ -31,7 +18,7 @@ public class InvenautoTests extends TestBase {
 		assertEquals(selectedURL, expctedURL, "The Home Page should be loaded.");
 	}
 
-  
+
     @Test
     public void canOpenSignInPage() {
     	var expctedURL = "https://invenauto.tech/index.php?controller=authentication&back=my-account";
@@ -43,26 +30,24 @@ public class InvenautoTests extends TestBase {
 
 		assertEquals(selectedURL, expctedURL, "The Home Page should be loaded.");    	
     }
-    
 
-      @Test
-    public void canSignIn() {
+    @Test
+    public void fr001B1_canLogin() {
     	var sampleEmail = "uwomxdikikacberjff@tmmwj.net";
     	var samplePassword = "frank";
     	var expectedUser = "Frank franklin";
-    	
+
     	var actualUser = fromPages()
     			.getSigninPage()
     			.navigate()
     			.signIn(sampleEmail, samplePassword)
     			.getUserName();
     	Assert.assertEquals(expectedUser, actualUser, "Correct user signed in");
-    	
     }
 
-  //driver shouldn't be in this page...
+    //driver shouldn't be in this page...
 	@Test
-	public void ViewProductDetailsForFurtherInformation() {
+	public void fr004b2_canViewProductDetails() {
 
 		WebDriver driver = new ChromeDriver();
 		var URL = "https://invenauto.tech/index.php";
@@ -95,34 +80,36 @@ public class InvenautoTests extends TestBase {
 		Actions action = new Actions(driver);
 		action.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Faded Short Sleeves T-shirt')]")));
 		action.click().build();
-		
 	}
 
-    
-
-
     @Test
-    public void canCheckoutAfterProductinCart() {
+    public void fr007B4_canCheckoutAfterProductinCart() {
 
     	var homePage = fromPages()
-
     			.getHomePage()
     			.navigate();
 
-
-
     	homePage.getProductListing()
     			.addToCart();
+
         var itemsExistInCartOnCheckoutPage = homePage
-        		.getproductPopUp()
-    			.clickProceedToCheckout()
+                .getproductPopUp()
+                .clickProceedToCheckout()
     			.areThereProducts();
 
-    	
         Assert.assertTrue(itemsExistInCartOnCheckoutPage, "should be able to checkout");
     }
 
+	@Test 
+	public void fr007B1_canAddToCartFromDetailPage() {
+		var expected = "1";
+
+		var actual = fromPages()
+					.getProductDetail()
+					.navigate()
+					.addTocart()
+					.isInCart();
+
+		Assert.assertEquals(actual, expected, "product should be added to cart from product page");
+	}
 }
-
-
-
