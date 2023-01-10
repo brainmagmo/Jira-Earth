@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class ProductDetailPage extends Page{
+public class ProductDetailPage extends InvenAutoPage {
 
     @FindBy(how=How.XPATH, using=".//h1[@itemprop='name']")
     private WebElement titleElement;
@@ -41,7 +41,7 @@ public class ProductDetailPage extends Page{
 	public String getDescription() {
 	    return descriptionElement.getText();
 	}
-	
+
 	public String getPrice() {
 	    return priceElement.getText();
 	}

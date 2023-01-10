@@ -4,8 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class AccountPage extends Page {
-	
+public class AccountPage extends InvenAutoPage {
+
 	@FindBy(css = "a.account")
 	private WebElement accountElement;
 

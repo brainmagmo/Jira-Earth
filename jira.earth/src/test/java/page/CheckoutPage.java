@@ -3,7 +3,7 @@ package page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutPage extends Page {
+public class CheckoutPage extends InvenAutoPage {
 
 	public CheckoutPage(WebDriver driver) {
 		super(driver);
@@ -20,5 +20,4 @@ public class CheckoutPage extends Page {
         this.driver.navigate().to(getURL());
         return this;
     }
-
 }

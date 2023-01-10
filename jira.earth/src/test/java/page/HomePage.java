@@ -9,7 +9,7 @@ import org.openqa.selenium.support.How;
 import control.ProductAddPopUp;
 import control.ProductListing;
 
-public class HomePage extends Page {
+public class HomePage extends InvenAutoPage {
 
     @FindBy(how=How.CSS, using=".product-container")
     private WebElement productListing; 

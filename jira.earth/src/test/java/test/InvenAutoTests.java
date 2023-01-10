@@ -1,9 +1,10 @@
+package test;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class InvenautoTests extends TestBase {
+public class InvenAutoTests extends TestBase {
 
 	@Test
 	public void canOpenIndex() {

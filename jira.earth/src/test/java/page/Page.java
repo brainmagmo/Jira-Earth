@@ -1,4 +1,5 @@
 package page;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -10,7 +11,14 @@ public abstract class Page {
     public Page(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
-        this.index = "https://invenauto.tech/";
+    }
+
+    public String getIndex() {
+        return this.index;
+    }
+    
+    public String getRoute() {
+        return this.route;
     }
 
     public String getURL() {
