@@ -1,42 +1,39 @@
 package page;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.By.ByXPath;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class ProductDetailPage extends Page{
-
+	
+	private int productID = 2;
 	
 	
 	public ProductDetailPage(WebDriver driver) {
-		super(driver);
-		
-		this.route ="?id_product=2&controller=product";
-		
+		super(driver);		
+		this.route ="?id_product="+productID+"&controller=product";		
 	}
-
-	public void addTocart() {
-		this.driver.navigate().to("https://invenauto.tech/index.php?id_product=2&controller=product");
-		this.driver.findElement(By.xpath("//SPAN[text()='Add to cart']")).click();
-		
+	
+	public ProductDetailPage(WebDriver driver, int productID) {
+		super(driver);		
+		this.route ="?id_product="+productID+"&controller=product";		
+	}
+	
+	public ProductDetailPage addTocart() {
+		this.driver.findElement(By.xpath("//SPAN[text()='Add to cart']")).click();		
+		return this;
 	}
 
 	
 	public String isInCart() {
-		// TODO Auto-generated method stub
-		this.driver.navigate().to("https://invenauto.tech/index.php?id_product=2&controller=product");
-		this.driver.findElement(By.xpath("//SPAN[text()='Add to cart']")).click();
-		
-		String s = this.driver.findElement(By.xpath(" //*[text()= 'Product successfully added to your shopping cart '")).getText();
-		
-		
-
+		String s = this.driver.findElement(By.xpath("//*[contains(@class,'ajax_cart_quantity')][contains(@style, 'display: inline')]")).getText();
 		return s;
 	}
 
+	@Override
+	public ProductDetailPage navigate() {
+		this.driver.navigate().to(getURL());
+		return this;
+	}
 	
 }
 
