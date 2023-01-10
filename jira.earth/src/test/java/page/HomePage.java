@@ -8,6 +8,7 @@ import org.openqa.selenium.support.How;
 
 import control.ProductAddPopUp;
 import control.ProductListing;
+import control.TShirtProductDetail;
 
 public class HomePage extends InvenAutoPage {
 
@@ -17,9 +18,14 @@ public class HomePage extends InvenAutoPage {
     @FindBy(css=".layer_cart_cart a")
 	private WebElement checkoutLink;
 
+    
+    @FindBy(how=How.XPATH, xpath="//a[contains(text(),'Faded Short Sleeves T-shirt')]")
+    private WebElement shortSleeveShirt;
+    
 	public HomePage(WebDriver driver) {
 		super(driver);
 		this.route = "index.php";
+		
 	}
 
 	public ProductListing getProductListing() {
@@ -39,5 +45,10 @@ public class HomePage extends InvenAutoPage {
     public HomePage navigate() {
         this.driver.navigate().to(getURL());
         return this;
+    }
+    
+    public TShirtProductDetail getTShirtDetails() {
+    	return new TShirtProductDetail(this.shortSleeveShirt, this.driver);
+    	
     }
 }
