@@ -42,4 +42,7 @@ public class PageRepository {
 
 	}
 
+	public CheckoutPage getCheckoutPage() {
+	    return new CheckoutPage(this.driver);
+	}
 }

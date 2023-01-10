@@ -14,6 +14,9 @@ public class HomePage extends Page {
     @FindBy(how=How.CSS, using=".product-container")
     private WebElement productListing; 
 
+    @FindBy(css=".layer_cart_cart a")
+	private WebElement checkoutLink;
+
 	public HomePage(WebDriver driver) {
 		super(driver);
 		this.route = "index.php";
@@ -22,6 +25,13 @@ public class HomePage extends Page {
 	public ProductListing getProductListing() {
 	    return new ProductListing(this.productListing);
 	}
+
+
+	public CheckoutPage clickProceedToCheckout() {
+	    checkoutLink.click();
+	    return new CheckoutPage(this.driver);
+	}
+
 	
 	public ProductAddPopUp  getproductPopUp() {
 		WebElement popUp = this.driver.findElement(By.id("layer_cart"));
@@ -32,4 +42,5 @@ public class HomePage extends Page {
         this.driver.navigate().to(getURL());
         return this;
     }
+
 }

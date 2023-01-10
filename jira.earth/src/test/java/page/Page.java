@@ -16,6 +16,8 @@ public abstract class Page {
     public String getURL() {
         return index + route;
     }
+
     
     abstract Page navigate();
+
 }
