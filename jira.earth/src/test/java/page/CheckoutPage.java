@@ -15,4 +15,12 @@ public class CheckoutPage extends Page {
 		var maybeButtons = this.driver.findElements(By.cssSelector(cssPath));
 		return maybeButtons.size() > 0;
 	}
+
+	
+    public CheckoutPage navigate() {
+        this.driver.navigate().to(getURL());
+        return this;
+    }
+
 }
+

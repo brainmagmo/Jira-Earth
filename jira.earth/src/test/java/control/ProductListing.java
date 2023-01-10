@@ -3,6 +3,7 @@ package control;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+
 public class ProductListing extends Control {
 
     public ProductListing(WebElement element) {
@@ -10,10 +11,9 @@ public class ProductListing extends Control {
     }
 
     public void addToCart() {
-        WebElement addToCartButton =
-                this.element
-                    .findElement(By.cssSelector("a.ajax_add_to_cart_button"));
-        
-        addToCartButton.click();
+
+    	WebElement addToCartButton = this.element.findElements(By.xpath("//span[text()='Add to cart']")).get(0);
+    	addToCartButton.click();
+
     }
 }

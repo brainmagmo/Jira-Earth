@@ -24,6 +24,11 @@ public class SigninPage extends Page {
 		signInButton.click();
 		return new AccountPage(this.driver);
 	}
+	
+    public SigninPage navigate() {
+        this.driver.navigate().to(getURL());
+        return this;
+    }
 
 }
 

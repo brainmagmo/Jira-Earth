@@ -1,10 +1,12 @@
 package page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import control.ProductAddPopUp;
 import control.ProductListing;
 
 public class HomePage extends Page {
@@ -24,8 +26,21 @@ public class HomePage extends Page {
 	    return new ProductListing(this.productListing);
 	}
 
+
 	public CheckoutPage clickProceedToCheckout() {
 	    checkoutLink.click();
 	    return new CheckoutPage(this.driver);
 	}
+
+	
+	public ProductAddPopUp  getproductPopUp() {
+		WebElement popUp = this.driver.findElement(By.id("layer_cart"));
+		return new ProductAddPopUp(popUp); 
+	}
+	
+    public HomePage navigate() {
+        this.driver.navigate().to(getURL());
+        return this;
+    }
+
 }
