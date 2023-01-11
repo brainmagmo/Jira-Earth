@@ -85,4 +85,21 @@ public class InvenAutoTests extends TestBase {
 	    
 	    Assert.assertTrue(emailSuccessful, "email should have been sent");
 	}
+	
+	@Test
+	public void fr13B1_canContactSupport() {
+	    var email = "email@email.com";
+	    var orderReference = "1212";
+	    var message = "Please cancel this order.";
+
+	    var contactSuccess
+	        = fromPages()
+	            .getHomePage()
+	            .navigate()
+	            .clickContactUsButton()
+	            .fillOutForm(email, orderReference, message)
+	            .hasContactBeenSuccessful();
+
+	    Assert.assertTrue(contactSuccess, "contact success expected");
+	}
 }

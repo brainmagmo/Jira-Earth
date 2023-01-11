@@ -17,6 +17,9 @@ public class HomePage extends InvenAutoPage {
     @FindBy(css=".layer_cart_cart a")
 	private WebElement checkoutLink;
 
+    @FindBy(css="#contact-link a")
+    private WebElement contactUsButton;
+
 	public HomePage(WebDriver driver) {
 		super(driver);
 		this.route = "index.php";
@@ -39,5 +42,10 @@ public class HomePage extends InvenAutoPage {
     public HomePage navigate() {
         this.driver.navigate().to(getURL());
         return this;
+    }
+
+    public ContactPage clickContactUsButton() {
+        this.contactUsButton.click();
+        return new ContactPage(this.driver);
     }
 }
