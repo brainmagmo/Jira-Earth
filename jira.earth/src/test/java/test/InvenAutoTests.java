@@ -58,7 +58,7 @@ public class InvenAutoTests extends TestBase {
         Assert.assertTrue(itemsExistInCartOnCheckoutPage, "should be able to checkout");
     }
 
-	@Test 
+	@Test
 	public void fr007B1_canAddToCartFromDetailPage() {
 		var expectedCartCount = "1";
 
@@ -70,5 +70,19 @@ public class InvenAutoTests extends TestBase {
 		       .getCartCount();
 
 		Assert.assertEquals(actualCartCount, expectedCartCount, "product should be added to cart");
+	}
+	
+	@Test
+	public void fr001B2_canResetPassword() {
+	    var emailSuccessful
+	        = fromPages()
+	            .getSigninPage()
+	            .navigate()
+	            .clickForgotPassword()
+	            .fillOutEmailInput("email@email.com")
+	            .clickRetrievePassword()
+	            .hasEmailBeenSent();
+	    
+	    Assert.assertTrue(emailSuccessful, "email should have been sent");
 	}
 }

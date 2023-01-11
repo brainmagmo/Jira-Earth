@@ -14,6 +14,9 @@ public class SigninPage extends InvenAutoPage {
 
 	@FindBy(css="button#SubmitLogin")
 	private WebElement signInButton;
+	
+	@FindBy(css="p.lost_password a")
+	private WebElement forgotPasswordLink;
 
 	public SigninPage(WebDriver driver) {
 		super(driver);
@@ -25,6 +28,11 @@ public class SigninPage extends InvenAutoPage {
 		passwordInput.sendKeys(password);
 		signInButton.click();
 		return new AccountPage(this.driver);
+	}
+
+	public ForgotPasswordPage clickForgotPassword() {
+	    this.forgotPasswordLink.click();
+	    return new ForgotPasswordPage(this.driver);
 	}
 
     public SigninPage navigate() {
